@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            .dashboard{
+                margin-top: 50px;
+            }
+            @media print{
+                .dashboard{display: none;}
+
+                .containers{
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .row{
+                    margin: 0;padding: 0;
+                }
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+        ul li{
+            float: left;
+            display: block;
+            width: 85px;
+            height: 85px;
+            text-align: center;
+            line-height: 85px;
+            font-size: 56px;
+            background-image:url('data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/4QMqaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTAxQzVGRDQ1RDdDMTFFNDhDMDA5MTYzNTRBQTI4NEEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTAxQzVGRDU1RDdDMTFFNDhDMDA5MTYzNTRBQTI4NEEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1MDFDNUZEMjVEN0MxMUU0OEMwMDkxNjM1NEFBMjg0QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MDFDNUZEMzVEN0MxMUU0OEMwMDkxNjM1NEFBMjg0QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEAAICAgICAgICAgIDAgICAwQDAgIDBAUEBAQEBAUGBQUFBQUFBgYHBwgHBwYJCQoKCQkMDAwMDAwMDAwMDAwMDAwBAwMDBQQFCQYGCQ0LCQsNDw4ODg4PDwwMDAwMDw8MDAwMDAwPDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/AABEIAFAAUAMBEQACEQEDEQH/xAB7AAACAwEBAQEAAAAAAAAAAAAACAQFBgMBAgcBAQAAAAAAAAAAAAAAAAAAAAAQAAAFAgMEBQoFBAMBAAAAAAECAwQFAAYREgghMQcJE9VXOBlBUSJzFHSVtRaWYXEkFbaBsUIjwTJSFxEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/UdC+gvSdxg0qcJOI/EbhKncd53K2lDzc0MzNtRXM3l3rZIehaP0US5UkiF9EgY4YjtxGgbTwwdC/YUl9w3H1pQHhg6F+wpL7huPrSgPDB0L9hSX3DcfWlBSXHy4NA1qwMvckvwMyRkI1UePjIztyqqdGkXMbKQkmImGg+re5b2ge54KIuKJ4GAeNm2iTxiZaduVJQUligYuYh5MBKOA7hoLnwwdC/YUl9w3H1pQHhg6F+wpL7huPrSgPDB0L9hSX3DcfWlAoevHQdpQ4OaUOLPEjhvwmTtu9bbThjQs2EzNuhQF1NsGi3+l2/WRNmRWOX0iDhjiGAgA0Djcs3uO8B/c5r59I0D20BQFBR3MrOI2/Mq2yxaydwJs1TQ8e9OKTdZwBRyEVOG4ojsH+4b6D221ZtaAhlblYtYyfUZpGmI9koKrdFwJQ6QiRx3lAdgf3HfQXdAUBQIRzPu4vx19Vb38ji6CVyze47wH9zmvn0jQPbQFAUGTvskcpZlzpy1wLWrGHjXAPrjbKgiqySyDmWIoIDgJQ2hQFiFji2ZbBYi4FrqjCxrcrG43CoLKvUwIAFWOoABiJt40GsoCgKBCOZ93F+Ovqre/kcXQSuWb3HeA/uc18+kaB7aAoCgzl3qnQta4Vk7dG7jpsFzFtgMmL/Ag/p/9gCUc+7aA/kNB5Z6qi9q28srbg2goowQMa1xyfoMSB+nwTAChk3bAD8goNJQFAUCEcz7uL8dfVW9/I4ugg8ua4IO3dC2n5zPS7SHbvSyzJou8WIiRRwtPyQJpFE4gAmNhsCge4LggxmzW0Eu0G4StfbjQoLE9pBsJsnSiljmy5tmOFBWBfNmjCSFyhdEWa34ldRtJzIOkhbILJHBM6aioGylMBjAGAj5Q89BPVuW3kH8PFLTbFOSuFM6sExMuQFXiaZQOcyBccTgBRxxDyUFDPTsdMwV7x1vXqwhpmBarN5OZIdJcYdwKQnKo4TMbAuQAzYGw3D5qCPbtyxERaNlGuG/I2dczSTZkxucyiKCcs7OTYKBSmyiY+A4AWg1KVwQa0y7txGXaKz0e2I8fQ5ViC5RbqDgRU6QDmKUR3CIUFV9eWV+wnun6rivpxNcWx5z2pL2UFgU6IUxVzZc2fZhjQWqtwwSMuwgFZhmnNyrdR1GxJliA4XQS/wC6iaeOYxS+UQCgQjmVXBBzeh3UQhDy7STXhVYBlLotliKmbOC3FFiZJUCiIlMHmGg6cu217duvQpp8Z3JDNJtqw/dX7NB2mChU3KE/JCmqUB/yLiNA9oWvboXGa7ghWgXOdmEeac6IvtItQNn6LPvwxoKcOG9hhbspaRbSjC21NuVHkrCFQKDddwqcFDqHIGzMJigOPkwDDdQWa9n2s5k4CZXgGKkpayR0LdfCiXpGaahATMREcPRDKGGAbvJQZm5bYsWBtviJLObQI8aXG0Xe3oyjmwndSgJpGAwCVMQMc4lxwwENo4447aDhbFr2Bctk2CohZabSCh0mspacNKNci8coUuZMwkUExinDNiIiI4jtHHfQbJG1rcb3A/upGFaJ3HKtE2MjMlSKDhZskOJEjn3iUMA2fgHmCgpP/mfD/wCmVLNC0IsLWVci8UgvZy+zi4FTphUyf+s+3H+m7ZQXKtq22vOxdzrQjM9wQrVRlEy4pF6du3W2HSTN/iUQ2YfiPnGgQrmSWvbtu6HtRrmChmkU4uBeAkJpZsmBDOXJ7iiwMqoIbxGg1HLN7jvAf3Oa+fSNA9tAUBQU9wlnDQUuW2TtU7hM0WCEUfAYWxXWQeiFUCbcubDHCg52yW4SW/DFuxRmrcpWiQTaseBitjOcodIKQH25caC8oCgKBCOZ93F+Ovqre/kcXQSuWb3HeA/uc18+kaB7aAoCgyl9/sn0XdX1I+cRlvjFOwmZBoc6a6LYUjAqdIyYCYDAXHDAB/IaCJw3C3gsK0gtORdS9thGIBCyT051HCzcC+gZUygFNm8+IBhuwCg21AUBQIRzPu4vx19Vb38ji6CVyze47wH9zmvn0jQPbQFAUFLcismhb80tCxSM5LJslzR0M4UBJJ0sBByInOYBACnHYONBHtJaXcWzBLT0KhbkydkiMjBNVCqotFcoAKSZygACUvkw3bqDRUBQFAhHM+7i/HX1VvfyOLoFP0La79KHCHSnwj4dcReLaFuXnbbaUJNwpoiZcigZxLvXKQCq1YrJGzJKkN6Jx34DtxCgbTxOdDXbs3+A3D1ZQHic6Gu3Zv8AAbh6soDxOdDXbs3+A3D1ZQVM9zJ9EcxCS0Uz1F/sbuSaLNm0y0gZ/p2p1SCUqyeaMEMxBHEP+KDhbHMi0TQFvQ8LIakTXI9jGqbd1OvYGf8AaHRyBgKqmWMwxH+v4iI7aC98TnQ127N/gNw9WUB4nOhrt2b/AAG4erKA8TnQ127N/gNw9WUCh68tdmlLjFpP4s8OOHHFpG5b0uROGCFhCxEy1FcWs2wdrYKumKKRcqKJzekcMcMA2iAUH//Z');
+            background-repeat: no-repeat;
+            margin-right:1px;
+            opacity: 0.6;
+        }
+        ul li:first-child{opacity: 1;}
+        .zitie-container{
+            padding-top:50px;
+        }
+        </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module('zitie',[]);
+        app.controller('dashboard', ['$scope',function($scope){
+            $scope.text = '陈晞';
+            $scope.characters = [];
+
+            $scope.rows = 3;
+            $scope.columns = 9;
+            $scope.emptyColumn = 2;
+            
+            $scope.$watch(function(){return $scope.text;},function(newVal, oldVal){
+                $scope.characters = [];
+                $scope.characters = newVal.split('');
+            });
+
+            $scope.getRows = function(){
+                var array = [];
+                for(var i=0;i<$scope.rows;i++){
+                    array.push(i);
+                }
+                return array;
+            }
+
+            $scope.numberToArray = function(num){
+                var array = [];
+                for(var i=0;i<num;i++){
+                    array.push(i);
+                }
+                return array;
+            }
+        }]);
+        </script>
+    </head>
+    <body data-ng-app="zitie" data-ng-controller='dashboard'>
+        <div class="dashboard">
+            <div class="container">
+                    <div class="row">
+                            <div class="col-md-4">
+                                <label>每个字要生成几行？</label><input type="text" class="form-control" data-ng-model="rows"/>
+                            </div>
+                            <div class="col-md-4">
+                                    <label>每行有几列？</label><input type="text" class="form-control" data-ng-model="columns"/>
+                                </div>
+                                <div class="col-md-4">
+                                        <label>要几列空白的？</label><input type="text" class="form-control" data-ng-model="emptyColumn"/>
+                                    </div>
+                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                                输入要生成的汉字：
+                            </p>
+                        <textarea data-ng-Model="text" class="form-control"></textarea>
+                    </div>
+                </div>
+         <div class="row" style="margin-top:10px">
+             <div class="col-md-12 text-right">
+                 <input type="button" class="btn btn-default" value="打印" onclick="javascript:window.print();" />
+             </div>
+         </div>
+            </div>
+        </div>
+        <div class="container zitie-container">
+            <div class="row" data-ng-repeat="item in characters">
+                    <ul data-ng-repeat="row in numberToArray(rows)">
+                        <li data-ng-repeat="column in numberToArray(columns)">
+                            {{item}}
+                        </li>
+                        <li data-ng-repeat="column in numberToArray(emptyColumn)">
+                               &nbsp;
+                            </li>
+                    </ul>
+            </div>
+        </div>
+    </body>
+</html>
